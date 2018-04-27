@@ -11,7 +11,6 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -26,7 +25,7 @@ public class AuthenticationServiceImplTest {
        authenticationService.setUserDao(userDao);
    }
    @Test
-    public void authenticationWithMock(){
+    public void testAuthenticationWithMock(){
        List<User> mockUsers=new ArrayList<>();
        mockUsers.add(new User((long) 124,"men","men","admin"));
        when(userDao.findAll()).thenReturn(mockUsers);
