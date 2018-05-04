@@ -10,5 +10,5 @@ services:
       - "8091:80"
     volumes:
       - type: bind
-        source: ./projectData
+        source: ./data
         target: /usr/share/nginx/html/assets
