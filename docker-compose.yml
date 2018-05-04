@@ -11,4 +11,4 @@ services:
     volumes:
       - type: bind
         source: ./projectData
-        target: /usr/share/nginx/assets
+        target: /usr/share/nginx/html/assets
