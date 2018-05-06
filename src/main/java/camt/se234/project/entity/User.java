@@ -24,32 +24,25 @@ public class User {
     String password;
     String role;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(getUserId(), user.getUserId()) &&
-                Objects.equals(getUsername(), user.getUsername()) &&
-                Objects.equals(getPassword(), user.getPassword()) &&
-                Objects.equals(getUserRole(), user.getUserRole());
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getUserId(), getUsername(), getPassword(), getUserRole());
+    public User(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
-
-
-    public Long getUserId() {
+    public Long getId() {
         return id;
     }
 
-    public void setUserId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
     public String getUsername() {
         return username;
     }
@@ -57,6 +50,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getPassword() {
         return password;
     }
@@ -65,13 +59,28 @@ public class User {
         this.password = password;
     }
 
-    public String getUserRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setUserRole(String role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(role, user.role);
+    }
 
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, username, password, role);
+    }
 }

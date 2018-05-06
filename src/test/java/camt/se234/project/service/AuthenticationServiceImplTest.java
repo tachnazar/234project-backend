@@ -1,16 +1,15 @@
 package camt.se234.project.service;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
+
 import camt.se234.project.dao.UserDao;
 import camt.se234.project.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -19,18 +18,18 @@ public class AuthenticationServiceImplTest {
    AuthenticationServiceImpl authenticationService;
 
    @Before
-    public void setup(){
-       userDao=mock(UserDao.class);
-       authenticationService=new AuthenticationServiceImpl();
-       authenticationService.setUserDao(userDao);
-   }
-   @Test
-    public void testAuthenticationWithMock(){
-       List<User> mockUsers=new ArrayList<>();
-       mockUsers.add(new User((long) 124,"men","men","admin"));
-       when(userDao.findAll()).thenReturn(mockUsers);
-       assertThat(authenticationService.authenticate("men","men"),is(new User((long) 124,"men","men","admin")));
-       assertThat(authenticationService.authenticate("men","sen"),is(nullValue()));
+   public void setup() {
+      userDao = mock(UserDao.class);
+      authenticationService = new AuthenticationServiceImpl();
+      authenticationService.setUserDao(userDao);
    }
 
+   @Test
+   public void testAuthenicateWithMock() {
+      when(userDao.getUser("men", "159")).thenReturn(new User("men", "159", "president"));
+      assertThat(authenticationService.authenticate("men", "159"), is(new User("men", "159", "president")));
+      assertThat(authenticationService.authenticate("sen", "sen"), is(nullValue()));
+
+   }
 }
+

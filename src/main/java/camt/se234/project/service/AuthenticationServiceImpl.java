@@ -16,13 +16,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     UserDao userDao;
     @Override
     public User authenticate(String username, String pasword) {
-        for (User user: this.userDao.findAll()){
-            if (user.getUsername().equals(username) && user.getPassword().equals(pasword)){
-                return user;
-
-            }
-        }
-        return null;
-//        return userDao.getUser(username,pasword);
+        return userDao.getUser(username,pasword);
     }
 }
