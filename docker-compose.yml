@@ -3,12 +3,12 @@ services:
   backend:
     image: 592115514/project234-backend:latest
     ports: 
-      - "8092:8080"
+      - "8093:8080"
   frontend:
     image: dto80/project234-frontend:latest
     ports:
-      - "8091:80"
+      - "8094:80"
     volumes:
       - type: bind
         source: ./data
-        target: /usr/share/nginx/html/assets
+        target: /Users/tach/Desktop/234project-backend
