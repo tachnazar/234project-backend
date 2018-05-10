@@ -26,8 +26,10 @@ public class AuthenticationServiceImplTest {
 
    @Test
    public void testAuthenicateWithMock() {
-      when(userDao.getUser("men", "159")).thenReturn(new User("men", "159", "president"));
-      assertThat(authenticationService.authenticate("men", "159"), is(new User("men", "159", "president")));
+      when(userDao.getUser("admin", "admin")).thenReturn(new User("admin", "admin", "admin"));
+      when(userDao.getUser("user", "user")).thenReturn(new User("user", "user", "user"));
+      assertThat(authenticationService.authenticate("admin", "admin"), is(new User("admin", "admin", "admin")));
+      assertThat(authenticationService.authenticate("user", "user"), is(new User("user", "user", "user")));
       assertThat(authenticationService.authenticate("sen", "sen"), is(nullValue()));
 
    }
